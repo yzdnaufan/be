@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "firebase": "^10.5.0",
-    "next": "13.5.6",
-    "next-auth": "^4.24.3",
-    "react": "^18",
-    "react-dom": "^18"
+    "@google-cloud/firestore": "^6.7.0",
+		"firebase": "^10.3.1",
+		"firebase-admin": "^11.10.1",
+		"next": "13.4.10",
+		"protobufjs": "^7.2.5",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"request": "^2.88.2"
   },
   "devDependencies": {
     "@auth/mongodb-adapter": "^2.0.2",
