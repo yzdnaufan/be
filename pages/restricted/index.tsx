@@ -1,9 +1,9 @@
 'use client'
 import React from "react";
-import { useAuthContext } from "@/context/context";
+import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 function Page() {
-    const {user} = useAuthContext()
+    const {user} = useAuth()
     const router = useRouter()
 
     React.useEffect(() => {

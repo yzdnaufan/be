@@ -1,11 +1,11 @@
+import RegistrationForm from '@/components/registerForm';
 import Head from 'next/head';
-import LoginForm from '@/components/loginForm';
 
-export default function Home() {
+const register = () => {
     return (
         <>
             <Head>
-                <title>Login - Firebase Authentication With Next.js</title>
+                <title>Register - Firebase Authentication With Next.js</title>
                 <meta
                     name="description"
                     content="Learn how to implement Google Firebase Authentication in your React, Next.js, TypeScript projects."
@@ -16,9 +16,12 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="m-0 bg-gradient-to-br from-primary-color to-blue-400 px-4">
-                <LoginForm />
+
+            <main className="m-0 min-h-screen bg-gradient-to-br from-primary-color to-blue-400 px-4">
+                <RegistrationForm />
             </main>
         </>
     );
-}
+};
+
+export default register;
