@@ -7,3 +7,7 @@ export interface RegistrationType {
 	email: string;
 	password: string;
 }
+
+export interface DataPictureType {
+	data : string;
+}
