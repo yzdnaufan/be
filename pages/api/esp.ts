@@ -21,7 +21,7 @@ async function uploadData(c:string, data:any, esp:any) {
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     switch (req.method) {
         case "POST":
-            const { myFilename, myFile }= req.query
+            const { myFilename, myFile }= req.body
             // Do something
             await uploadData("esp", myFile , myFilename);
             return res.status(200).json({message : "OK"});
