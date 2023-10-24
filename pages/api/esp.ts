@@ -5,7 +5,7 @@ import firebase_app from '@/lib/firebase';
 
 const db = getFirestore(firebase_app);
 
-async function uploadData(c, data, esp) {
+async function uploadData(c:string, data:any, esp:any) {
     try {
         const docRef = await addDoc(collection(db, c), {
             FileName: esp,
@@ -21,9 +21,9 @@ async function uploadData(c, data, esp) {
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     switch (req.method) {
         case "POST":
-            const { myFilename, myFile }= req.query;
+            const { myFilename, myFile }= req.query
             // Do something
-            await uploadData("esp", myFile, myFilename);
+            await uploadData("esp", myFile , myFilename);
             return res.status(200).json(myFilename);
             break;
         case "GET":

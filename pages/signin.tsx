@@ -7,8 +7,8 @@ function Page() {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const router = useRouter()
-
-    const handleForm = async (event) => {
+    
+    const handleForm = async (event : any) => {
         event.preventDefault()
 
         const { result, error } = await signIn(email, password);
