@@ -1,5 +1,5 @@
 {
-  "name": "be-11b",
+  "name": "be",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
-    "firebase": "^10.4.0",
-    "next": "13.5.4",
-    "next-auth": "^4.23.2",
-    "react": "^18",
-    "react-dom": "^18"
+    "@google-cloud/firestore": "^6.7.0",
+    "firebase": "^10.3.1",
+    "firebase-admin": "^11.10.1",
+    "next": "13.4.10",
+    "protobufjs": "^7.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
+    "@auth/mongodb-adapter": "^2.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "13.5.6",
+    "mongodb": "^6.2.0",
+    "nodemailer": "^6.9.6",
+    "postcss": "^8",
+    "tailwindcss": "^3",
     "typescript": "^5"
   }
 }
