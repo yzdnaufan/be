@@ -24,7 +24,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
             const { myFilename, myFile }= req.query
             // Do something
             await uploadData("esp", myFile , myFilename);
-            return res.status(200).json(myFilename);
+            return res.status(200).json({message : "OK"});
             break;
         case "GET":
             return res.status(405).json({
