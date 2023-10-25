@@ -7,4 +7,5 @@ export function corsMiddleware(res: NextApiResponse){
         res.setHeader('Access-Control-Allow-Credentials', 'true');
         resolve();
     }
+    );
 }
