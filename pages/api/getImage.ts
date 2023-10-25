@@ -7,7 +7,7 @@ import firebase_app from '@/lib/firebase';
 
 const db = getFirestore(firebase_app);
 
-async function handler(req : NextApiRequest, res : NextApiResponse) {
+export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     corsMiddleware(res);
     switch (req.method) {
         case "POST":
