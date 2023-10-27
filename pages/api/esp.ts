@@ -5,7 +5,7 @@ import firebase_app from '@/lib/firebase';
 
 const db = getFirestore(firebase_app);
 
-async function uploadData(c:string, data:any, esp:any) {
+async function uploadData(c:string, data:any, esp:any, ) {
     try {
         const docRef = await addDoc(collection(db, c), {
             FileName: esp,

@@ -10,17 +10,22 @@
   },
   "dependencies": {
     "@google-cloud/firestore": "^6.7.0",
+    "cookie": "^0.5.0",
+    "cors": "^2.8.5",
     "firebase": "^10.3.1",
     "firebase-admin": "^11.10.1",
+    "jsonwebtoken": "^9.0.2",
     "next": "13.4.10",
     "protobufjs": "^7.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "typescript-cookie": "^1.0.6"
   },
   "devDependencies": {
     "@auth/mongodb-adapter": "^2.0.2",
+    "@types/cors": "^2.8.15",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
