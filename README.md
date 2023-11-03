@@ -7,11 +7,17 @@ GET  ../api/getImage?all[]  OR ../api/getImage?uname=[]
 GET  ../api/getCount?uname=[]
 
 POST ../api/esp
+
   body : {
+  
     myFilename: string,
+    
     myFile : string(base64),
+    
     part : string,
+    
     uname : string
+    
     }
     
 
