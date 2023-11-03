@@ -27,7 +27,6 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
             // Do something
             await uploadData("esp", myFile , myFilename, part, uname);
             return res.status(200).json({message : "OK"});
-            break;
         case "GET":
             return res.status(405).json({
                 message: "Method Not Allowed"
