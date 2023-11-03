@@ -7,8 +7,8 @@ GET  ../api/getImage?all[]  OR ../api/getImage?uname=[]
 GET  ../api/getCount?uname=[]
 
 POST ../api/esp
-`
-  body : {
+
+  `body : {
   
     myFilename: string,
     
@@ -18,8 +18,7 @@ POST ../api/esp
     
     uname : string
     
-    }
-`
+    }`
 
 
 ## Getting Started
