@@ -9,7 +9,6 @@ GET  ../api/getCount?uname=[]
 POST ../api/esp
 
   `body : {
-  
     myFilename: string,
     
     myFile : string(base64),
@@ -17,7 +16,6 @@ POST ../api/esp
     part : string,
     
     uname : string
-    
     }`
 
 
