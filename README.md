@@ -1,5 +1,21 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Endpoints 
+
+GET  ../api/getImage?all[]  OR ../api/getImage?uname=[]
+
+GET  ../api/getCount?uname=[]
+
+POST ../api/esp
+  body : {
+    myFilename: string,
+    myFile : string(base64),
+    part : string,
+    uname : string
+    }
+    
+
+
 ## Getting Started
 
 First, run the development server:
