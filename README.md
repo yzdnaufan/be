@@ -8,17 +8,22 @@ GET  ../api/getCount?uname=[]
 
 POST ../api/esp
 
-  `body : {
-  
-    myFilename: string,
+body :
+
+<code>
+    {
     
-    myFile : string(base64),
+        myFilename: string,
+        
+        myFile : string(base64),
+        
+        part : string,
+        
+        uname : string
     
-    part : string,
-    
-    uname : string
-    
-    }`
+    }
+</code>
+
 
 
 ## Getting Started
