@@ -10,13 +10,15 @@ POST ../api/esp
 body :
 <code>
     {
-    myFilename: string,
     
-    myFile : string(base64),
+        myFilename: string,
+        
+        myFile : string(base64),
+        
+        part : string,
+        
+        uname : string
     
-    part : string,
-    
-    uname : string
     }
 </code>
 
