@@ -1,6 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { collection, getDocs, getFirestore, doc, query, where} from 'firebase/firestore';
+import { collection, getDocs, getFirestore, limit, query, where, orderBy} from 'firebase/firestore';
 import { corsMiddleware } from '@/lib/cors';
 
 import firebase_app from '@/lib/firebase';
@@ -22,7 +22,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
 
             } 
             else if(uname) {
-                const q = query(collection(db, "esp"), where("uname", "==", uname));
+                const q = query(collection(db, "esp"), where("uname", "==", uname), limit(20), orderBy("timestamp", "desc") );
                 const results = await getDocs(q);
                 return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
             }

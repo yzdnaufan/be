@@ -1,6 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { collection, getDocs, getFirestore, doc, query, where} from 'firebase/firestore';
+import { collection, getDocs, getFirestore,  orderBy, query, where} from 'firebase/firestore';
+import { limit as lim} from 'firebase/firestore';
 import { corsMiddleware } from '@/lib/cors';
 
 import firebase_app from '@/lib/firebase';
@@ -14,9 +15,10 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
             // Do something
             return res.status(405).json({message : "Method Not Allowed"});
         case "GET":
-            const { uname }   = req.query;   
+            const { uname, limit }   = req.query;   
+            const li = limit ? Number(limit[0]) : 20;
             if (uname) {
-                const q = query(collection(db, "yolo"), where("uname", "==", uname));
+                const q = query(collection(db, "yolo"), where("uname", "==", uname), orderBy("timestamp", "desc"), lim(li));
                 const results = await getDocs(q);
                 return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
             } else {
