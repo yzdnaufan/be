@@ -15,9 +15,9 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
             return res.status(405).json({message : "Method Not Allowed"});
         case "GET":
             const { all, uname }   = req.query;   
-
             if (all) {
-                const querySnapshot = await getDocs(collection(db, "esp"));
+                const q = query(collection(db, "esp"), limit(20), orderBy("timestamp", "desc") );
+                const querySnapshot = await getDocs(q);
                 return res.status(200).json({message : "OK", data : querySnapshot.docs.map(doc => doc.data())});
 
             } 
