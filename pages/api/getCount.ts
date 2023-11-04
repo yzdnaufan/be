@@ -10,25 +10,31 @@ const db = getFirestore(firebase_app);
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     corsMiddleware(res,req);
-    switch (req.method) {
-        case "POST":
-            // Do something
-            return res.status(405).json({message : "Method Not Allowed"});
-        case "GET":
-            const { uname, limit }   = req.query;   
-            const li = limit ? Number(limit[0]) : 20;
-            if (uname) {
-                const q = query(collection(db, "yolo"), where("uname", "==", uname), orderBy("timestamp", "desc"), lim(li));
-                const results = await getDocs(q);
-                return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
-            } else {
+    try {
+        switch (req.method) {
+            case "POST":
+                // Do something
+                return res.status(405).json({message : "Method Not Allowed"});
+            case "GET":
+                const { uname, limit }   = req.query;
+                 
+                if (uname) {
+                    const q = query(collection(db, "yolo"), where("uname", "==", uname), orderBy("timestamp", "desc"), lim(li));
+                    const results = await getDocs(q);
+                    return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
+                } else {
+                    return res.status(405).json({
+                        message: "Unknown Error"
+                    });
+                }
+            default:
                 return res.status(405).json({
-                    message: "Unknown Error"
+                    message: "Method Not Allowed"
                 });
-            }
-        default:
-            return res.status(405).json({
-                message: "Method Not Allowed"
-            });
+        }    
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal Server Error"
+        });
     }
 };
