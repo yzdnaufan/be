@@ -2,9 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Endpoints 
 
-GET  ../api/getImage?all[]  OR ../api/getImage?uname=[]
+>all GET endpoints have aditional `limit=...` queries that add limit for queries and will be ordered by time. default is 20
+
+GET  ../api/getImage?all[]  OR ../api/getImage?uname=[] 
 
 GET  ../api/getCount?uname=[]
+
 
 POST ../api/esp
 
