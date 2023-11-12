@@ -1,11 +1,18 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { collection, getDocs, getFirestore, limit as li, query, where, orderBy} from 'firebase/firestore';
+import { collection, getDocs, getFirestore, limit as li, query, where, orderBy, and} from 'firebase/firestore';
 import { corsMiddleware } from '@/lib/cors';
 
 import firebase_app from '@/lib/firebase';
 
 const db = getFirestore(firebase_app);
+
+enum QueryParams {
+    All = "all",
+    Uname = "uname",
+    Limit = "limit",
+    CamPart = "cam_part"
+}
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     corsMiddleware(res,req);
@@ -15,17 +22,16 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                 // Do something
                 return res.status(405).json({message : "Method Not Allowed"});
             case "GET":
-                const { all, uname, limit }   = req.query;   
+                const { all, uname, limit, cam_part }   = req.query;   
                 const lim = limit ? Number(limit) : 20;
-    
+
                 if (all) {
                     const q = query(collection(db, "esp"), li(lim), orderBy("timestamp", "desc") );
                     const querySnapshot = await getDocs(q);
                     return res.status(200).json({message : "OK", data : querySnapshot.docs.map(doc => doc.data())});
-    
                 } 
-                else if(uname) {
-                    const q = query(collection(db, "esp"), where("uname", "==", uname), li(lim), orderBy("timestamp", "desc") );
+                else if(uname && cam_part) {
+                    const q = query(collection(db, "esp"), where("uname", "==", uname), where("cam_part", "==", cam_part), li(lim), orderBy("timestamp", "desc") );
                     const results = await getDocs(q);
                     return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
                 }
