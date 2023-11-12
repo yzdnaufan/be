@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 >all GET endpoints have aditional `limit=...` queries that add limit for queries and will be ordered by time. default is 20
 
-GET  ../api/getImage?all[]  OR ../api/getImage?uname=[] 
+GET  ../api/getImage?all[]  OR ../api/getImage?uname=[]&cam_part=[]
 
 GET  ../api/getCount?uname=[]
 
