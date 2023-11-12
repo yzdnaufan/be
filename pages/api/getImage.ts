@@ -15,7 +15,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                 // Do something
                 return res.status(405).json({message : "Method Not Allowed"});
             case "GET":
-                const { all, uname, limit, cam_part }   = req.query;   
+                const { all, uname, limit }   = req.query;   
                 const lim = limit ? Number(limit) : 20;
 
                 if (all) {
@@ -23,8 +23,8 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                     const querySnapshot = await getDocs(q);
                     return res.status(200).json({message : "OK", data : querySnapshot.docs.map(doc => doc.data())});
                 } 
-                else if(uname && cam_part) {
-                    const q = query(collection(db, "esp"), where("uname", "==", uname), where("cam_part", "==", cam_part), li(lim), orderBy("timestamp", "desc") );
+                else if(uname) {
+                    const q = query(collection(db, "esp"), where("uname", "==", uname), li(lim), orderBy("timestamp", "desc") );
                     const results = await getDocs(q);
                     return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
                 }
