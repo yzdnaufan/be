@@ -1,6 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { collection, getDocs, getFirestore,  orderBy, query, where} from 'firebase/firestore';
+import { collection, getDocs, getFirestore,  orderBy, query, where, and} from 'firebase/firestore';
 import { limit as lim} from 'firebase/firestore';
 import { corsMiddleware } from '@/lib/cors';
 
@@ -19,7 +19,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                 const { uname, limit, cam_part }   = req.query;
                 const li = limit ? Number(limit) : 20;
                 if (uname && cam_part) {
-                    const q = query(collection(db, "yolo"), where("uname", "==", uname), where("part", "==", cam_part), orderBy("timestamp", "desc"), lim(li));
+                    const q = query(collection(db, "yolo"),and( where("uname", "==", uname), where("part", "==", cam_part)), orderBy("timestamp", "desc"), lim(li));
                     const results = await getDocs(q);
                     return res.status(200).json({message : "OK", data : results.docs.map(doc => doc.data())});
                 } else {
@@ -34,7 +34,8 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
         }    
     } catch (error) {
         return res.status(500).json({
-            message: "Internal Server Error"
+            message: "Internal Server Error",
+            error: error.message
         });
     }
 };
