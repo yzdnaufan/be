@@ -7,13 +7,6 @@ import firebase_app from '@/lib/firebase';
 
 const db = getFirestore(firebase_app);
 
-enum QueryParams {
-    All = "all",
-    Uname = "uname",
-    Limit = "limit",
-    CamPart = "cam_part"
-}
-
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
     corsMiddleware(res,req);
     try {

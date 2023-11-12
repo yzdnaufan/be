@@ -17,6 +17,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                 return res.status(405).json({message : "Method Not Allowed"});
             case "GET":
                 const { uname, limit }   = req.query;
+                const li = limit? Number(limit) : 20;
                  
                 if (uname) {
                     const q = query(collection(db, "yolo"), where("uname", "==", uname), orderBy("timestamp", "desc"), lim(li));
